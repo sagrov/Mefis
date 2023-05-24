@@ -1,0 +1,66 @@
+.flex {
+  display: block;
+}
+
+footer{
+    background-color: black;
+}
+
+footer h3{
+  color: white;
+    margin-bottom:1.5rem;
+}
+
+footer a{
+    display:block;
+    margin:15px 0;
+  text-decoration: none;
+  color: gray;
+}
+
+footer a:hover{
+
+}
+
+footer fieldset{
+    padding:0;
+}
+
+footer fieldset input{
+    background-color:#334f6c;
+    border:0;
+    padding:1rem;
+}
+
+footer fieldset .btn{
+    border-radius:0;
+    border:0;
+}
+
+footer fieldset .btn_2:hover{
+    background-color:var(--secondary);
+    border:0;
+    color:var(--primary);
+}
+
+@media (max-width:1100px){
+    footer .flex-content{
+        flex: 1 1 40%;
+    }
+    .website-name {
+      padding-top: 30px;
+      padding-left: 30px;
+      font-size: 32px;
+    }
+}
+
+@media (max-width:320px){
+    footer .flex-content{
+        flex:1 1 100%;
+    }
+    .website-name {
+        padding-top: 30px;
+        padding-left: 30px;
+        font-size: 20px;
+    }
+}
