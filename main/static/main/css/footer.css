@@ -1,66 +1,194 @@
-.flex {
-  display: block;
-}
 
-footer{
+footer {
     background-color: black;
 }
 
-footer h3{
-  color: white;
-    margin-bottom:1.5rem;
+footer h3 {
+    color: white;
 }
 
-footer a{
-    display:block;
-    margin:15px 0;
-  text-decoration: none;
-  color: gray;
+
+footer fieldset {
+    padding: 0;
 }
 
-footer a:hover{
-
+footer fieldset input {
+    background-color: #334f6c;
+    border: 0;
+    padding: 1rem;
 }
 
-footer fieldset{
-    padding:0;
+footer fieldset .btn {
+    border-radius: 0;
+    border: 0;
 }
 
-footer fieldset input{
-    background-color:#334f6c;
-    border:0;
-    padding:1rem;
+footer fieldset .btn_2:hover {
+    background-color: var(--secondary);
+    border: 0;
+    color: var(--primary);
 }
 
-footer fieldset .btn{
-    border-radius:0;
-    border:0;
+.email-button-footer {
+    height: 20px;
+    width: 20px;
 }
 
-footer fieldset .btn_2:hover{
-    background-color:var(--secondary);
-    border:0;
-    color:var(--primary);
+
+.footer-email input {
+    max-width: 500px;
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+    color: gray;
+    bottom: 0%;
 }
 
-@media (max-width:1100px){
-    footer .flex-content{
+.footer-email p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: gray;
+}
+
+.footer-email button {
+    height: 20px;
+    width: 20px;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.arrow-3 {
+    border: solid gray;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    -webkit-transform: rotate(-45deg);
+}
+
+
+@media (min-width: 721px) and (max-width: 1100px) {
+    .flex {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 150px);
+    }
+
+    footer .flex-content {
         flex: 1 1 40%;
     }
-    .website-name {
-      padding-top: 30px;
-      padding-left: 30px;
-      font-size: 32px;
-    }
-}
 
-@media (max-width:320px){
-    footer .flex-content{
-        flex:1 1 100%;
-    }
     .website-name {
         padding-top: 30px;
         padding-left: 30px;
-        font-size: 20px;
+        font-size: 32px;
+        grid-area: 1/1/2/2;
     }
+
+    .website-info {
+        grid-area: 2/1/3/2;
+    }
+
+    .footer-email {
+        grid-area: 2/2/3/3;
+        justify-content: flex-start;
+    }
+
+    .website-info h3 {
+        margin-bottom: 1.5rem;
+        margin-left: 45px;
+    }
+
+    .website-info p {
+        margin-left: 45px;
+        text-decoration: none;
+        color: gray;
+    }
+}
+
+@media (min-width: 1101px) {
+
+    .flex {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 150px);
+    }
+
+    footer .flex-content {
+        flex: 1 1 40%;
+    }
+
+    .website-name {
+        padding-top: 30px;
+        padding-left: 30px;
+        font-size: 32px;
+        grid-area: 1/1/2/2;
+    }
+
+    .website-info {
+        grid-area: 2/1/3/2;
+    }
+
+    .footer-email {
+        grid-area: 2/2/3/3;
+        justify-content: flex-start;
+    }
+
+    .website-info h3 {
+        margin-bottom: 1.5rem;
+        margin-left: 45px;
+    }
+
+    .website-info p {
+        margin-left: 45px;
+        text-decoration: none;
+        color: gray;
+    }
+}
+
+@media (max-width: 720px) {
+    .flex {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .website-name {
+        font-size: 32px;
+        grid-area: 1/1/2/2;
+        text-align: center;
+    }
+
+    .website-name h3 {
+        padding-top: 20px;
+    }
+
+    .website-info {
+        text-align: center;
+        grid-area: 2/1/3/2;
+    }
+
+    .footer-email {
+        grid-area: 3/1/4/2;
+        text-align: center;
+        margin-top: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .footer-email input {
+        margin-bottom: 10px;
+    }
+
+    .website-info p {
+        text-decoration: none;
+        color: gray;
+    }
+
+    .website-info h3 {
+        margin-bottom: 10px;
+    }
+
 }
