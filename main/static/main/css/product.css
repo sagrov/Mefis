@@ -1,0 +1,267 @@
+.product-page {
+    height: 600px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 750px auto;
+    grid-template-rows: 70px 185px 285px;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    overflow: hidden;
+}
+
+.product-images {
+    height: 100%;
+    width: 100%;
+    grid-area: 1/1/4/2;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+
+.small-image-1 {
+    background-color: #334f6c;
+    grid-area: 1/1/2/2;
+    height: 100%;
+    width: 200px;
+}
+
+.small-image-2 {
+    background-color: bisque;
+    grid-area: 2/1/3/2;
+    height: 100%;
+    width: 200px;
+}
+
+.big-image {
+
+    background-color: aqua;
+    grid-area: 1/2/3/3;
+    height: 100%;
+    width: 100%;
+}
+
+.product-name {
+    grid-area: 1 / 2 / 2 / 3;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.name-and-category {
+    grid-area: 1/1/3/2;
+
+}
+
+.name-and-category h5 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.name-and-category p {
+    color: #434343;
+    margin-top: 10px;
+}
+
+.price {
+    grid-area: 1/2/2/3;
+}
+
+.price p {
+    float: right;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.product-description {
+    grid-area: 2 / 2 / 3 / 3;
+    width: 75%;
+}
+
+.product-description p {
+    font-size: 18px;
+
+}
+
+.product-options {
+    grid-area: 3 / 2 / 4 / 3;
+    display: grid;
+    grid-template-rows: 75px 75px 75px;
+    grid-row-gap: 30px;
+}
+
+.size-option {
+    grid-area: 1/1/2/2;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 120px auto 50px;
+}
+
+.product-options h3 {
+    font-weight: 300;
+}
+
+.size-option .option-name {
+    display: flex;
+    align-items: center;
+}
+
+.size-option .option-setting {
+    text-align: right;
+}
+
+.size-option .option-setting p {
+    margin-top: 27px;
+    color: #434343;
+}
+
+.selector-arrow {
+    border: solid gray;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    -webkit-transform: rotate(45deg);
+}
+
+.select-option {
+    display: flex;
+    align-items: center;
+}
+
+.select-option label {
+    margin-left: 21px;
+}
+
+.fabric-option {
+    grid-area: 2/1/3/2;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 120px auto 50px;
+}
+
+.fabric-option .option-name {
+    display: flex;
+    align-items: center;
+}
+
+.fabric-option .option-setting {
+    text-align: right;
+}
+
+.fabric-option .option-setting p {
+    margin-top: 27px;
+    color: #434343;
+}
+
+#options-toggle-fabric {
+    display: none;
+}
+
+#options-toggle-fabric:checked ~ .options-menu {
+    transform: scale(1, 1);
+}
+
+.fabric-option .options-menu {
+    flex-direction: column;
+    background-color: black;
+    align-items: start;
+    position: relative;
+    top: 66px;
+    right: -600%;
+    z-index: 1;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+}
+
+.add-to-cart-options {
+    grid-area: 3/1/4/2;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-column-gap: 30px;
+}
+
+
+
+.add-to-cart-options .quantity {
+    border: 1px solid black;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+
+.add-to-cart-options .quantity h2 {
+    position: relative;
+    color: black;
+    font-weight: 200;
+}
+
+#increment-btn, #decrement-btn {
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 36px;
+    font-weight: 200;
+}
+
+#increment-btn {
+    position: relative;
+    right: 70px;
+}
+
+#decrement-btn {
+    position: relative;
+    left: 70px;
+}
+
+#counter-value {
+    top: 23px;
+}
+
+#options-toggle-size {
+    display: none;
+}
+
+#options-toggle-size:checked ~ .options-menu {
+    transform: scale(1, 1);
+}
+
+.size-option .options-menu {
+    flex-direction: column;
+    background-color: black;
+    align-items: start;
+    position: relative;
+    top: 66px;
+    right: 414px;
+    z-index: 1;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+}
+
+.options-menu-icon {
+    display: block;
+    cursor: pointer;
+}
+
+.options-menu p {
+    color: white;
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.2s all ease-in-out;
+}
+
+.add-button .add-to-cart-button {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.add-button .add-to-cart-button p {
+    font-size: 22px;
+}

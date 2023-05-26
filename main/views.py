@@ -172,6 +172,9 @@ def catalog(request):
 def cart(request):
     return render(request, 'main/cart.html')
 
+def product(request):
+    return render(request, 'main/product.html')
+
 # def products_features():
 #     products = [
 #         {

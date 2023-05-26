@@ -1,0 +1,91 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}
+    Mefis: Product
+{% endblock %}
+
+{% block content %}
+    {% include "main/includes/header.html" %}
+    <div class="product-page">
+        <div class="product-images">
+            <div class="small-image-1">
+
+            </div>
+            <div class="small-image-2">
+
+            </div>
+            <div class="big-image">
+
+            </div>
+        </div>
+        <div class="product-name">
+            <div class="name-and-category">
+                <h5>Екторп</h5>
+                <p>Секційний диван</p>
+            </div>
+            <div class="price">
+                <p>200 грн</p>
+            </div>
+        </div>
+        <div class="product-description">
+            <p>Подушки сидiння з наповнювачем з високоеластичного пiнополiуретану та вати з полiестерного волокна;
+                забезпечують оптимальний комфорт та легко вiдновлюють початкову форму.</p>
+        </div>
+        <div class="product-options">
+            <div class="size-option">
+                <div class="option-name">
+                    <h3>Розміри</h3>
+                </div>
+                <div class="option-setting">
+                    <p>см. 100 х 15 х 13</p>
+                </div>
+                <div class="select-option">
+                    <input type="checkbox" id="options-toggle-size">
+                    <label for="options-toggle-size" class="options-menu-icon">
+                        <i class="selector-arrow"></i>
+                    </label>
+                    <ul class="options-menu">
+                        <li><p>см.150х60х13</p></li>
+                        <li><p>см.150х60х13</p></li>
+                        <li><p>см.150х60х13</p></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="fabric-option">
+                <div class="option-name">
+                    <h3>Оббивка</h3>
+                </div>
+                <div class="option-setting">
+                    <p>Поліестер</p>
+                </div>
+                <div class="select-option">
+                    <input type="checkbox" id="options-toggle-fabric">
+                    <label for="options-toggle-fabric" class="options-menu-icon">
+                        <i class="selector-arrow"></i>
+                    </label>
+                    <ul class="options-menu">
+                        <li><p>см.150х60х13</p></li>
+                        <li><p>см.150х60х13</p></li>
+                        <li><p>см.150х60х13</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="add-to-cart-options">
+                <div class="quantity">
+                    <button id="increment-btn" class="button-plus" onclick="increment()">+</button>
+                    <h2 id="counter-value">1</h2>
+                    <button id="decrement-btn" class="button-minus" onclick="decrement()">-</button>
+                </div>
+                <div class="add-button">
+                    <button class="add-to-cart-button"><p>Додати до кошику</p></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script src="../../static/main/js/counter.js"></script>
+    {% include "main/includes/footer.html" %}
+{% endblock %}
