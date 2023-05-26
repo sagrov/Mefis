@@ -1,16 +1,18 @@
+<link rel="stylesheet" href="../../static/main/css/header.css">
+
 <header class="header">
   <nav>
     <div class="logo">
-      <a href="index.html">Mefis</a>
+      <a href="{% url 'home' %}">Mefis</a>
     </div>
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="menu-icon">&#9776;</label>
     <ul class="menu">
-      <li><a href="#">Стільці</a></li>
-      <li><a href="#">Столи</a></li>
-      <li><a href="#">Лампи</a></li>
-      <li><a href="#">Ліжко</a></li>
-      <li><a href="#">Диван</a></li>
+      <li><a href="{% url 'catalog' %}">Стільці</a></li>
+      <li><a href="{% url 'catalog' %}">Столи</a></li>
+      <li><a href="{% url 'catalog' %}">Лампи</a></li>
+      <li><a href="{% url 'catalog' %}">Ліжко</a></li>
+      <li><a href="{% url 'catalog' %}">Диван</a></li>
     </ul>
   </nav>
 </header>

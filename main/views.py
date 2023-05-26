@@ -132,12 +132,41 @@ def index(request):
                 'url': '../../static/main/img/2.jpg'
             }
         },
-    ]
+    ],
+
     return render(request, 'main/index.html', context={"products": products, "categories": categories})
 
 
 def catalog(request):
-    return render(request, 'main/catalog.html')
+    category_menues = [
+        {
+            'name': 'Стільці'
+        },
+        {
+            'name': 'Столи'
+        },
+        {
+            'name': 'Лампи'
+        },
+        {
+            'name': 'Ліжко'
+        },
+        {
+            'name': 'Дивани'
+        },
+    ],
+    sub_category_menues = [
+        {
+            'name': 'Всі товари'
+        },
+        {
+            'name': 'Офісні'
+        },
+        {
+            'name': 'Домашні'
+        }
+    ],
+    return render(request, 'main/catalog.html', context={"category_menues": category_menues, "sub_category_menues": sub_category_menues})
 
 
 def cart(request):

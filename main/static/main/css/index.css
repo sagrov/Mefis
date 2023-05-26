@@ -89,8 +89,7 @@
 
 .home-demo .item {
     transition: all 0.5s ease-in-out;
-    margin-left: 5px;
-    margin-right: 6px;
+    width: 100%;
 }
 
 

@@ -6,10 +6,30 @@
 
 {% block content %}
     {% include "main/includes/header.html" %}
+    <div class="wrapper">
+        <div class="categories">
+            <h3>Категорії</h3>
+            {% for category_menues in category_menues %}
+                <form>
+                    <input id="html" type="checkbox">
+                    <label for="html">{{  category_menues.name }}</label>
+                </form>
+            {% endfor %}
+        </div>
 
+        <div class="sub-categories">
+            <h3>Підкатегорії</h3>
+            {% for sub_category_menues in sub_category_menues %}
+                <form>
+                    <input id="html" type="checkbox">
+                    <label for="html">{{  sub_category_menues.name }}</label>
+                </form>
+            {% endfor %}
+        </div>
+        <div class="shop-grid">
 
-    <h1>Catalog</h1>
-    <p>Catalog</p>
+        </div>
+    </div>
 
     {% include "main/includes/footer.html" %}
 {% endblock %}
