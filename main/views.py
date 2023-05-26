@@ -135,6 +135,100 @@ def index(request):
     ],
 
     return render(request, 'main/index.html', context={"products": products, "categories": categories})
+    # products = [
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #     {
+    #         'name': 'Зелений стілець',
+    #         'cost': 100.25,
+    #         'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
+    #         'img': {
+    #             'url': '../../static/main/img/1.jpg'
+    #         }
+    #
+    #     },
+    #
+    # ]
+    # return render(request, 'main/index.html', context={"products": products})
 
 
 def catalog(request):
