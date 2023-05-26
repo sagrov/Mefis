@@ -5,22 +5,22 @@
 {% endblock %}
 
 {% block content %}
-
-
     {% include "main/includes/header.html" %}
     <div class="catalog">
         <div class="categories">
             <h3>Категорії</h3>
             {% for category in categories %}
                 <form>
-                    <input id="html{{ category.name }}" type="checkbox">
+                    <input id="html{{ category.name }}" type="checkbox"
+                           onclick="window.location.href='?category={{ category.name }}'">
                     <label for="html{{ category.name }}">{{ category.name }}</label>
                 </form>
             {% endfor %}
             <h3 class="sub-category">Підкатегорії</h3>
             {% for subcategory in subcategories %}
-                <form action="/{{ subcategory.name }}/" method="post">
-                    <input id="html{{ subcategory.name }}" type="checkbox" value = "{{ subcategory.name }}">
+                <form>
+                    <input id="html{{ subcategory.name }}" type="checkbox"
+                           onclick="window.location.href='?subcategory={{ subcategory.name }}'">
                     <label for="html{{ subcategory.name }}">{{ subcategory.name }}</label>
                 </form>
             {% endfor %}

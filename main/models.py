@@ -7,6 +7,7 @@ from django.db import models
 
 
 class Categories(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -14,6 +15,7 @@ class Categories(models.Model):
 
 
 class Subcategories(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -21,6 +23,7 @@ class Subcategories(models.Model):
 
 
 class Size(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -28,6 +31,7 @@ class Size(models.Model):
 
 
 class Fabric(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
 
     addition_to_price = models.IntegerField(default=0)
