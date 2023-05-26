@@ -1,6 +1,7 @@
 .product-page {
     height: 600px;
     width: 100%;
+    padding-right: 10%;
     display: grid;
     grid-template-columns: 750px auto;
     grid-template-rows: 70px 185px 285px;

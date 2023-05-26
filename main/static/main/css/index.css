@@ -78,7 +78,11 @@
     padding-top: 50px;
 }
 
-.home-demo h1, h3 {
+.home-demo h1 {
+    margin-left: 15px;
+}
+
+.home-demo h3 {
     margin-left: 15px;
 }
 
@@ -156,6 +160,7 @@
     transition: 0.5s;
     opacity: 1;
 }
+
 
 @media (max-width: 400px) {
     .home-demo .item {

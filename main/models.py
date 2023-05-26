@@ -30,7 +30,7 @@ class Size(models.Model):
 class Fabric(models.Model):
     name = models.CharField(max_length=50)
 
-    addition_to_price = models.IntegerField
+    addition_to_price = models.IntegerField(default=0)
 
     def __str__(self):
         return f'name: {self.name}\naddition_to_price: {self.addition_to_price}\n '
@@ -93,3 +93,11 @@ class CartItem(models.Model):
     @property
     def price(self):
         return self.product.price * self.quantity
+
+
+class ProductForMainPage(models.Model):
+    name = models.CharField(max_length=50)
+    pic = models.FileField("img", upload_to=f"img")
+
+    def __str__(self):
+        return f'{self.name} --> {self.pic}'
