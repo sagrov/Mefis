@@ -4,7 +4,6 @@ from .models import (Categories, Subcategories,
                      Size, Fabric,
                      Cart, CartItem, ProductForMainPage)
 
-
 def index(request):
     products = ProductForMainPage.objects.all()
     return render(request, 'main/index.html', {'products': products})
@@ -47,8 +46,8 @@ def cart(request):
 def product(request):
     if request.method == "GET":
         request_name = request.GET.get("name")
-        products = Product.objects.filter(name=request_name)
-        # productimage = ProductImage.objects.get(product_id=products)
+        product_main = Product.objects.filter(name=request_name)
+        products = Product.objects.all()
 
-    return render(request, 'main/product.html', {'product': products})
+    return render(request, 'main/product.html', {'product_main': product_main, 'products': products})
 
