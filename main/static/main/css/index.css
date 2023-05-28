@@ -169,6 +169,10 @@
         background: #ff3f4d;
     }
 
+    .home-demo .item:hover {
+        transform: none;
+    }
+
     .home-demo .item .item-description {
         bottom: 100px;
         opacity: 1;
@@ -180,6 +184,10 @@
 
     .home-demo .item .item-description-2 h2 {
         font-size: 12px;
+    }
+
+    .home-demo .item .item-description .arrow {
+        left: 90%;
     }
 }
 
@@ -196,6 +204,10 @@
 
     .home-demo .item .item-description-2 h2 {
         font-size: 14px;
+    }
+
+    .home-demo .item .item-description .arrow {
+        left: 90%;
     }
 
 }
@@ -215,6 +227,10 @@
 .home-demo h3 {
     font-weight: 200;
     margin-bottom: 0;
+}
+
+.home-demo .item .item-description .arrow {
+    left: 90%;
 }
 
 
@@ -253,18 +269,26 @@
 .six-categories .category .category-name {
     opacity: 0;
     color: white;
+    margin: 0 auto;
+}
+
+.six-categories .category .category-name h1 {
+    text-decoration: none;
+}
+
+.six-categories a {
+    text-decoration: none;
 }
 
 .six-categories .category div {
     width: max-content;
     position: relative;
     top: -65.783%;
-    left: 31.3359%;
 }
 
 .six-categories .category .white-button-category {
     top: -45.783%;
-    left: 25.055%;
+    margin: 0 auto;
     height: 150px;
     width: 150px;
     border: 2px solid white;
@@ -317,7 +341,6 @@
 
     .six-categories .category div {
         top: -65.783%;
-        left: 36%;
     }
 
     .six-categories .category .white-button-category {
@@ -347,6 +370,7 @@
         width: 200px;
     }
 
+
     .six-categories img {
         width: 200px;
         height: 480px;
@@ -360,12 +384,12 @@
 
     .six-categories .category div {
         top: -65.783%;
-        left: 21.941%;
     }
 
     .six-categories .category .white-button-category {
-        top: -45.783%;
-        left: 12.5%;
+        top: -55%;
+        height: 100px;
+        width: 100px;
     }
 }
 
@@ -409,6 +433,9 @@
     }
 
     .six-categories .category .white-button-category {
+        top: -45%;
+        height: 150px;
+        width: 150px;
         opacity: 1;
     }
 }

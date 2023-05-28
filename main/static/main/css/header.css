@@ -10,7 +10,7 @@
 
 nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   padding: 20px 30px;
 }
@@ -21,6 +21,7 @@ nav {
   color: white;
   text-decoration: none;
   list-style: none;
+  margin: 0 auto;
 }
 
 .menu {
@@ -51,7 +52,7 @@ nav {
 
 .menu-icon {
   position: absolute;
-  top: 24px;
+  top: 17px;
   left: 24px;
   display: none;
 }
@@ -69,9 +70,21 @@ nav {
     position: sticky;
   }
 
+  .profile-bag-icon {
+    position: absolute;
+
+    right: 80px;
+  }
+
   nav {
     background-color: black;
     height: 75px;
+  }
+
+  .logo {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
   }
 
   .menu {
@@ -87,6 +100,20 @@ nav {
     transform-origin: top;
     transition: transform 0.3s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+
+  .shopping-bag-icon {
+    position: absolute;
+    right: 20px;
+  }
+
+  .profile-bag-icon {
+    position: absolute;
+    right: 70px;
+  }
+
+  .user-control img {
+    margin-bottom: 5px;
   }
 
   .menu a {

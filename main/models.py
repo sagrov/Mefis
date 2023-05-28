@@ -45,10 +45,11 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
 
+
     fabrics = models.ForeignKey(Fabric, on_delete=models.DO_NOTHING, null=True)
 
-    photo = models.ImageField(upload_to='products/')
-    price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    photo = models.ImageField(upload_to='main/static/main/img')
+    price = models.DecimalField(default=0, max_digits=10, decimal_places=0)
     is_available = models.BooleanField(default=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
     subcategory = models.ForeignKey(Subcategories, on_delete=models.CASCADE, null=True)
@@ -59,7 +60,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
-    images = models.FileField("img", upload_to=f"img/%Y/%m/%d/")
+    images = models.FileField("img", upload_to=f"img")
 
     def __str__(self):
         return self.product.name

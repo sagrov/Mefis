@@ -1,6 +1,6 @@
 .catalog {
     display: grid;
-    height: 1000px;
+    height: auto;
     grid-template-columns: 220px auto;
     grid-template-rows: auto auto;
     grid-column-gap: 30px;
@@ -17,7 +17,7 @@
     background-color: #334f6c;
     height: fit-content;
     width: 100%;
-    grid-area:1/1/2/2;
+    grid-area: 1/1/2/2;
     padding-left: 50px;
 }
 
@@ -55,7 +55,7 @@
 
 .catalog input:hover {
     transition: all 0.2s ease-in-out;
-    background-color: rgba(192,192,192, .2);
+    background-color: rgba(192, 192, 192, .2);
 }
 
 .catalog input:checked {
@@ -82,5 +82,43 @@
 
 .product-text .product-text-price {
     text-align: right;
+}
+
+@media (max-width: 750px) {
+    .catalog {
+        display: grid;
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .categories {
+        grid-area: 1/1/2/2;
+    }
+
+    .shop-grid {
+        grid-area: 2/1/3/2;
+        margin: 0 auto;
+        grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    }
+
+    .shop-grid a {
+        height: 250px;
+        width: 100%;
+        padding: 10px;
+        border-bottom: 1px solid rgba(67, 67, 67, .2);
+        text-decoration: none;
+        color: black;
+    }
+
+    .shop-grid a h1 {
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    .shop-grid a:nth-of-type(odd) {
+        border-right: 1px solid rgba(67, 67, 67, .2);;
+    }
+
 }
 
