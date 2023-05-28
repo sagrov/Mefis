@@ -8,44 +8,68 @@
 
     <script>
         $(function () {
-    $(".category-operator").on("change", function () {
-        var hash = $(".category-operator:checked").map(function () {
-            return this.value;
-        }).toArray();
-        hash = hash.join("|");
-        location.hash = hash;
-        alert(hash);
-    });
-    if (location.hash !== "") {
-        var hash = location.hash.substr(1).split("|");
-        hash.forEach(function (value) {
-            $("input[value=" + value + "]").prop("checked", true)
+            $(".category-operator").on("change", function () {
+                var hash = $(".category-operator:checked").map(function () {
+                    return this.value;
+                }).toArray();
+                hash = hash.join("|");
+                location.hash = hash;
+                alert(hash);
+            });
+            if (location.hash !== "") {
+                var hash = location.hash.substr(1).split("|");
+                hash.forEach(function (value) {
+                    $("input[value=" + value + "]").prop("checked", true)
+                });
+            }
+            return hash;
         });
-    }
-    return hash;
-});
     </script>
 
 
     {% include "main/includes/header.html" %}
     <div class="catalog">
         <div class="categories">
-            <h3>Категорії</h3>
-            {% for category in categories %}
-                <form>
-                    <input id="html{{ category.name }}" type="checkbox" class="category-operator" value="{{ category.name }}"
-                          onclick="window.location.href='?category={{ category.name }}'">
-                    <label for="html{{ category.name }}">{{ category.name }}</label>
-                </form>
-            {% endfor %}
-            <h3 class="sub-category">Підкатегорії</h3>
-            {% for subcategory in subcategories %}
-                <form>
-                    <input id="html{{ subcategory.name }}" type="checkbox"
-                           onclick="window.location.href='?subcategory={{ subcategory.name }}'">
-                    <label for="html{{ subcategory.name }}">{{ subcategory.name }}</label>
-                </form>
-            {% endfor %}
+
+            <div class="catalog-responsive-options">
+                <input type="checkbox" id="menu-catalog-toggle">
+                <label for="menu-catalog-toggle" class="menu-catalog-icon">&#9776;</label>
+                <ul class="menu-catalog">
+                    <li>
+                        <h3 class="categories">Категорії</h3>
+                        {% for category in categories %}
+                            <form>
+                                <input id="html{{ category.name }}" type="checkbox" class="category-operator"
+                                       value="{{ category.name }}"
+                                       onclick="window.location.href='?category={{ category.name }}'">
+                                <label for="html{{ category.name }}">{{ category.name }}</label>
+                            </form>
+                        {% endfor %}
+                        <h3 class="sub-category">Підкатегорії</h3>
+                        {% for subcategory in subcategories %}
+                            <form>
+                                <input id="html{{ subcategory.name }}" type="checkbox"
+                                       onclick="window.location.href='?subcategory={{ subcategory.name }}'">
+                                <label for="html{{ subcategory.name }}">{{ subcategory.name }}</label>
+                            </form>
+                        {% endfor %}</li>
+                </ul>
+            </div>
+
+            <div class="sorting-menu">
+                <input type="checkbox" id="sorting-menu-toggle">
+                <label for="sorting-menu-toggle" class="sorting-menu-icon">&#9776;</label>
+                <li>
+                        <h3 class="categories">Сортування</h3>
+                        {% for category in categories %}
+                            <form>
+                                <input id="html{{ category.name }}" type="checkbox" class="category-operator"
+                                       value="{{ category.name }}"
+                                       onclick="window.location.href='?category={{ category.name }}'">
+                                <label for="html{{ category.name }}">{{ category.name }}</label>
+                            </form>
+                        {% endfor %}</li>
+            </div>
 
 
         </div>

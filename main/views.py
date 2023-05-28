@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import (Categories, Subcategories,
                      Product, ProductImage,
                      Size, Fabric,
                      Cart, CartItem, ProductForMainPage)
 
+
 def index(request):
-    products = ProductForMainPage.objects.all()
-    return render(request, 'main/index.html', {'products': products})
+    product = Product.objects.all()
+    products_six = ProductForMainPage.objects.all()
+    return render(request, 'main/index.html', {'products': product, 'products_six': products_six, })
 
 
 def catalog(request):
@@ -46,8 +48,9 @@ def cart(request):
 def product(request):
     if request.method == "GET":
         request_name = request.GET.get("name")
-        product_main = Product.objects.filter(name=request_name)
+        product = get_object_or_404(Product, name=request_name)
         products = Product.objects.all()
-
-    return render(request, 'main/product.html', {'product_main': product_main, 'products': products})
+        product_images = product.productimage_set.all()
+        # product_main_images = ProductImage.objects.filter(product=product)
+    return render(request, 'main/product.html', {'product_main': product, 'products': products, 'product_images': product_images})
 
