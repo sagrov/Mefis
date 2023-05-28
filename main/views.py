@@ -43,6 +43,7 @@ def catalog(request):
     subcategories = Subcategories.objects.all()
     return render(request, 'main/catalog.html', {'products': products, 'categories': categories, 'subcategories': subcategories})
 
+
 def category(request, category_id):
     categories = Categories.objects.all()
     products = Product.objects.filter(category__product__id=category_id)
@@ -51,16 +52,14 @@ def category(request, category_id):
     return render(request, 'main/catalog.html', {'products': products, 'categories': categories, 'subcategories': subcategories})
 
 
+def product(request, product_real_id):
+    main_product = Product.objects.get(id=product_real_id)
+    main_product_images = ProductImage.objects.get(id=main_product.id)
+    products = Product.objects.all()
+    return render(request, 'main/product.html', {'head_product': main_product, 'products': products, 'head_product_images': main_product_images})
+
+
 def cart(request):
     return render(request, 'main/cart.html')
 
-
-def product(request):
-    if request.method == "GET":
-        request_name = request.GET.get("name")
-        product = get_object_or_404(Product, name=request_name)
-        products = Product.objects.all()
-        product_images = product.productimage_set.all()
-        # product_main_images = ProductImage.objects.filter(product=product)
-    return render(request, 'main/product.html', {'product_main': product, 'products': products, 'product_images': product_images})
 

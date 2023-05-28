@@ -61,7 +61,7 @@
 
         <div class="shop-grid">
             {% for product in products %}
-                <a href="product?name={{ product.name }}">
+                <a href="{% url 'product_page' product_real_id=product.id%}">
                     <div class="product-wrapper">
 
                         <div class="product-photo">
