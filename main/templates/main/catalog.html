@@ -33,8 +33,10 @@
 
             <div class="catalog-responsive-options">
                 <input type="checkbox" id="menu-catalog-toggle">
-                <label for="menu-catalog-toggle" class="menu-catalog-icon">&#9776;</label>
+                <label for="menu-catalog-toggle" class="menu-catalog-icon"><img class="filter-image" src="../../static/main/img/filter.png"></label>
+
                 <ul class="menu-catalog">
+
                     <li>
                         <h3 class="categories">Категорії</h3>
                         {% for category in categories %}
@@ -54,13 +56,17 @@
                             </form>
                         {% endfor %}</li>
                 </ul>
+            <p class="filter-text">Фільтри</p>
             </div>
 
             <div class="sorting-menu">
                 <input type="checkbox" id="sorting-menu-toggle">
-                <label for="sorting-menu-toggle" class="sorting-menu-icon">&#9776;</label>
-                <li>
+
+                <label for="sorting-menu-toggle" class="sorting-menu-icon"><img class="sorting-image" src="../../static/main/img/up-down.png"></label>
+                <ul class="sorting-catalog">
+                    <li>
                         <h3 class="categories">Сортування</h3>
+
                         {% for category in categories %}
                             <form>
                                 <input id="html{{ category.name }}" type="checkbox" class="category-operator"
@@ -69,6 +75,8 @@
                                 <label for="html{{ category.name }}">{{ category.name }}</label>
                             </form>
                         {% endfor %}</li>
+                </ul>
+                <p class="sorting-text">Сортування</p>
             </div>
 
 
