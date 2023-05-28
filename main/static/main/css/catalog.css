@@ -3,7 +3,14 @@
     height: auto;
     grid-template-columns: 220px auto;
     grid-template-rows: auto auto;
-    grid-column-gap: 30px;
+}
+
+.filter-text {
+    opacity: 0;
+}
+
+.sorting-text {
+    opacity: 0;
 }
 
 
@@ -60,6 +67,7 @@
     grid-area: 1/2/3/3;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 30px;
 }
 
 .catalog input {
@@ -142,6 +150,28 @@
     text-align: right;
 }
 
+@media (min-width: 585px) and (max-width: 750px) {
+    .shop-grid a {
+        height: 250px;
+        width: 100%;
+        padding: 10px;
+        /*border-bottom: 1px solid rgba(67, 67, 67, .2);*/
+        text-decoration: none;
+        color: black;
+        grid-column-gap: 0;
+    }
+
+    .shop-grid a:nth-of-type(odd) {
+        border-right: 1px solid rgba(67, 67, 67, .2);
+        border-bottom: 1px solid rgba(67, 67, 67, .2);
+    }
+
+    .shop-grid a:nth-of-type(even) {
+        border-right: 1px solid rgba(67, 67, 67, .2);
+        border-bottom: 1px solid rgba(67, 67, 67, .2);
+    }
+}
+
 @media (max-width: 750px) {
     .catalog {
         display: grid;
@@ -171,6 +201,7 @@
         margin: 0 auto;
         grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
         grid-template-rows: 1fr;
+        grid-column-gap: 0;
     }
 
     .catalog-responsive-options {
@@ -195,22 +226,15 @@
         padding-left: 15px;
         font-size: 18px;
         font-weight: 500;
+        opacity: 1;
     }
 
     .filter-text {
+        opacity: 1;
         padding-top: 5px;
         padding-left: 18px;
         font-size: 18px;
         font-weight: 500;
-    }
-
-    .shop-grid a {
-        height: 250px;
-        width: 100%;
-        padding: 10px;
-        border-bottom: 1px solid rgba(67, 67, 67, .2);
-        text-decoration: none;
-        color: black;
     }
 
     .shop-grid a h1 {
@@ -267,5 +291,16 @@
         cursor: pointer;
     }
 
+}
+
+@media (max-width: 585px) {
+    .shop-grid a {
+        height: 250px;
+        width: 100%;
+        padding: 10px;
+        border-bottom: 1px solid rgba(67, 67, 67, .2);
+        text-decoration: none;
+        color: black;
+    }
 }
 
