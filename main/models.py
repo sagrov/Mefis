@@ -7,6 +7,7 @@ from django.db import models
 
 
 class Categories(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -14,6 +15,7 @@ class Categories(models.Model):
 
 
 class Subcategories(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -21,6 +23,7 @@ class Subcategories(models.Model):
 
 
 class Size(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -28,9 +31,10 @@ class Size(models.Model):
 
 
 class Fabric(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
 
-    addition_to_price = models.IntegerField
+    addition_to_price = models.IntegerField(default=0)
 
     def __str__(self):
         return f'name: {self.name}\naddition_to_price: {self.addition_to_price}\n '
@@ -41,10 +45,11 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
 
+
     fabrics = models.ForeignKey(Fabric, on_delete=models.DO_NOTHING, null=True)
 
-    photo = models.ImageField(upload_to='products/')
-    price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    photo = models.ImageField(upload_to='main/static/main/img')
+    price = models.DecimalField(default=0, max_digits=10, decimal_places=0)
     is_available = models.BooleanField(default=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
     subcategory = models.ForeignKey(Subcategories, on_delete=models.CASCADE, null=True)
@@ -55,7 +60,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
-    images = models.FileField("img", upload_to=f"img/%Y/%m/%d/")
+    images = models.FileField("img", upload_to=f"img")
 
     def __str__(self):
         return self.product.name
@@ -93,3 +98,11 @@ class CartItem(models.Model):
     @property
     def price(self):
         return self.product.price * self.quantity
+
+
+class ProductForMainPage(models.Model):
+    name = models.CharField(max_length=50)
+    pic = models.FileField("img", upload_to=f"img")
+
+    def __str__(self):
+        return f'{self.name} --> {self.pic}'

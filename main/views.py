@@ -1,188 +1,56 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import (Categories, Subcategories,
+                     Product, ProductImage,
+                     Size, Fabric,
+                     Cart, CartItem, ProductForMainPage)
 
 
 def index(request):
-    products = [
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/2.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-        {
-            'name': 'Зелений стілець',
-            'cost': 100.25,
-            'descriptions': 'Этот текст содержит в себе информацию о данном товаре',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-
-        },
-
-    ],
-    categories = [
-        {
-            'name': 'Лампа',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-        },
-        {
-            'name': 'Лампа',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-        },
-        {
-            'name': 'Лампа',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-        },
-        {
-            'name': 'Лампа',
-            'img': {
-                'url': '../../static/main/img/2.jpg'
-            }
-        },
-        {
-            'name': 'Лампа',
-            'img': {
-                'url': '../../static/main/img/1.jpg'
-            }
-        },
-        {
-            'name': 'Лампа',
-            'img': {
-                'url': '../../static/main/img/2.jpg'
-            }
-        },
-    ],
-
-    return render(request, 'main/index.html', context={"products": products, "categories": categories})
+    product = Product.objects.all()
+    products_six = ProductForMainPage.objects.all()
+    return render(request, 'main/index.html', {'products': product, 'products_six': products_six, })
 
 
 def catalog(request):
-    category_menues = [
-        {
-            'name': 'Стільці'
-        },
-        {
-            'name': 'Столи'
-        },
-        {
-            'name': 'Лампи'
-        },
-        {
-            'name': 'Ліжко'
-        },
-        {
-            'name': 'Дивани'
-        },
-    ],
-    sub_category_menues = [
-        {
-            'name': 'Всі товари'
-        },
-        {
-            'name': 'Офісні'
-        },
-        {
-            'name': 'Домашні'
-        }
-    ],
-    return render(request, 'main/catalog.html', context={"category_menues": category_menues, "sub_category_menues": sub_category_menues})
+    if request.method == "GET":
+        request_category = request.GET.get("category")
+        request_subcategory = request.GET.get("subcategory")
+        if request.GET.get("category"):
+            if request_category == "Стільці":
+                products = Product.objects.filter(category=2)
+            elif request_category == "Столи":
+                products = Product.objects.filter(category=3)
+            elif request_category == "Лампи":
+                products = Product.objects.filter(category=4)
+            elif request_category == "Ліжка":
+                products = Product.objects.filter(category=5)
+            elif request_category == "Дивани":
+                products = Product.objects.filter(category=6)
+            else:
+                products = Product.objects.all()
+
+        if request.GET.get("subcategory"):
+            if request_subcategory == "Домашні":
+                products = Product.objects.filter(subcategory=2)
+            if request_subcategory == "Офісні":
+                products = Product.objects.filter(subcategory=3)
+            if request_subcategory == "Всі товари":
+                products = Product.objects.all()
+    categories = Categories.objects.all()
+    subcategories = Subcategories.objects.all()
+    return render(request, 'main/catalog.html', {'product': products, 'categories': categories, 'subcategories': subcategories})
 
 
 def cart(request):
     return render(request, 'main/cart.html')
 
-def product(request):
-    return render(request, 'main/product.html')
 
-# def products_features():
-#     products = [
-#         {
-#             'product': {
-#                 'name': 'Зелений стілець',
-#                 'cost': 100.25,
-#                 'descriptions': 'Этот текст содержит в себе информацию о данном товаре'
-#             }
-#         }
-#     ]
-#     return 0
+def product(request):
+    if request.method == "GET":
+        request_name = request.GET.get("name")
+        product = get_object_or_404(Product, name=request_name)
+        products = Product.objects.all()
+        product_images = product.productimage_set.all()
+        # product_main_images = ProductImage.objects.filter(product=product)
+    return render(request, 'main/product.html', {'product_main': product, 'products': products, 'product_images': product_images})
+

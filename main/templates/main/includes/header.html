@@ -5,14 +5,20 @@
         <div class="logo">
             <a href="{% url 'home' %}">Mefis</a>
         </div>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <ul class="menu">
-            <li><a href="{% url 'catalog' %}">Стільці</a></li>
-            <li><a href="{% url 'catalog' %}">Столи</a></li>
-            <li><a href="{% url 'catalog' %}">Лампи</a></li>
-            <li><a href="{% url 'catalog' %}">Ліжко</a></li>
-            <li><a href="{% url 'catalog' %}">Диван</a></li>
-        </ul>
+        <div class="main-menu">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="catalog?category=Стільці">Стільці</a></li>
+                <li><a href="catalog?category=Столи">Столи</a></li>
+                <li><a href="catalog?category=Лампи">Лампи</a></li>
+                <li><a href="catalog?category=Ліжка">Ліжко</a></li>
+                <li><a href="catalog?category=Дивани">Диван</a></li>
+            </ul>
+        </div>
+
+            <img class="shopping-bag-icon" src="../../../static/main/img/icons8-shopping-bag-50%201.png">
+        <img class="profile-bag-icon" src="../../../static/main/img/icons8-shopping-bag-50%201.png">
+
     </nav>
 </header>
