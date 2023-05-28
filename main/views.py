@@ -61,7 +61,8 @@ def product(request, product_real_id):
 
 
 def cart(request):
+    products = Product.objects.all()
     categories = Categories.objects.all()
-    return render(request, 'main/cart.html', {'categories': categories})
+    return render(request, 'main/cart.html', {'categories': categories, 'products': products})
 
 

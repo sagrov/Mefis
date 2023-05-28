@@ -25,43 +25,28 @@
             {#                {% for items in cart_items %}#}
             {#                {% endfor %}#}
             <div class="cart-item">
+                {% for items in products %}
                 <div class="cart-item-wrapper">
                     <div class="item-image">
-                        <img alt="img">
+                        <img src="{{ items.photo.url }}" alt="img">
                     </div>
                     <div class="item-name-quantity">
-                        <h3>Name Quantity</h3>
+                        <h3 class="cart-name">{{ items.name }}</h3>
+                        <h3 class="cart-quantity">Кількість: </h3>
                     </div>
                     <div class="item-price">
-                        <h3>200hrn</h3>
+                        <h3>{{ items.price }} грн</h3>
+                        <button class="delete-button">Видалити</button>
                     </div>
                 </div>
-                <div class="cart-item-wrapper">
-                    <div class="item-image">
-                        <img alt="img">
-                    </div>
-                    <div class="item-name-quantity">
-                        <h3>Name Quantity</h3>
-                    </div>
-                    <div class="item-price">
-                        <h3>200hrn</h3>
-                    </div>
-                </div>
-                <div class="cart-item-wrapper">
-                    <div class="item-image">
-                        <img alt="img">
-                    </div>
-                    <div class="item-name-quantity">
-                        <h3>Name Quantity</h3>
-                    </div>
-                    <div class="item-price">
-                        <h3>200hrn</h3>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="total-cost">
             <h3>Загальна вартість: </h3>
+            <div class="cost">
+                <h3>грн</h3>
+            </div>
         </div>
     </div>
     {% include "main/includes/footer.html" %}
