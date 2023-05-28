@@ -53,13 +53,15 @@ def category(request, category_id):
 
 
 def product(request, product_real_id):
+    categories = Categories.objects.all()
     main_product = Product.objects.get(id=product_real_id)
-    main_product_images = ProductImage.objects.get(id=main_product.id)
+    main_product_images = ProductImage.objects.filter()
     products = Product.objects.all()
-    return render(request, 'main/product.html', {'head_product': main_product, 'products': products, 'head_product_images': main_product_images})
+    return render(request, 'main/product.html', {'head_product': main_product, 'categories': categories, 'products': products, 'head_product_images': main_product_images})
 
 
 def cart(request):
-    return render(request, 'main/cart.html')
+    categories = Categories.objects.all()
+    return render(request, 'main/cart.html', {'categories': categories})
 
 

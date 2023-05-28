@@ -1,16 +1,68 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Cart</title>
-    </head>
+{% extends 'main/layout.html' %}
 
+{% block title %}
+    Mefis: Catalog
+{% endblock %}
 
-    <body>
-        <h1>Aboba</h1>
-        <p>asdasd</p>
-    </body>
-</html>
+{% block content %}
+    {% include "main/includes/header.html" %}
+    <div class="cart-wrapper">
+        <div class="your-cart">
+            <h3>Ваша корзина</h3>
+        </div>
+        <div class="cart-summary">
+            <div class="item-summary">
+                <h3 class="item-photo">
+                    Фото
+                </h3>
+                <h3 class="item-name">
+                    Назва товару
+                </h3>
+                <h3 class="item-total-price">
+                    Вартість
+                </h3>
+            </div>
+            {#                {% for items in cart_items %}#}
+            {#                {% endfor %}#}
+            <div class="cart-item">
+                <div class="cart-item-wrapper">
+                    <div class="item-image">
+                        <img alt="img">
+                    </div>
+                    <div class="item-name-quantity">
+                        <h3>Name Quantity</h3>
+                    </div>
+                    <div class="item-price">
+                        <h3>200hrn</h3>
+                    </div>
+                </div>
+                <div class="cart-item-wrapper">
+                    <div class="item-image">
+                        <img alt="img">
+                    </div>
+                    <div class="item-name-quantity">
+                        <h3>Name Quantity</h3>
+                    </div>
+                    <div class="item-price">
+                        <h3>200hrn</h3>
+                    </div>
+                </div>
+                <div class="cart-item-wrapper">
+                    <div class="item-image">
+                        <img alt="img">
+                    </div>
+                    <div class="item-name-quantity">
+                        <h3>Name Quantity</h3>
+                    </div>
+                    <div class="item-price">
+                        <h3>200hrn</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="total-cost">
+            <h3>Загальна вартість: </h3>
+        </div>
+    </div>
+    {% include "main/includes/footer.html" %}
+{% endblock %}

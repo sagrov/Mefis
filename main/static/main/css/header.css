@@ -133,5 +133,6 @@ nav {
 }
 
 .shopping-bag-icon {
-
+  position: absolute;
+  top: 0;
 }

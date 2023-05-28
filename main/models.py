@@ -63,7 +63,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
-    images = models.FileField("img", upload_to=f"img")
+    images = models.ImageField("img", upload_to='main/static/main/img')
 
     def __str__(self):
         return self.product.name
