@@ -18,9 +18,9 @@
                     <li>
                         <h3 class="categories">Категорії</h3>
                         {% for category in categories %}
-                            <form href="{% url 'category_details' category_id=category.id %}">
+                            <form>
                                 <input id="html{{ category.name }}" type="checkbox" class="category-operator"
-                                       value="{{ category.name }}" >
+                                       value="{{ category.name }}" onclick="window.location.href='?category={{ category.id }}'">
                                 <label for="html{{ category.name }}">{{ category.name }}</label>
                             </form>
                         {% endfor %}
@@ -28,7 +28,7 @@
                         {% for subcategory in subcategories %}
                             <form>
                                 <input id="html{{ subcategory.name }}" type="checkbox"
-                                       onclick="window.location.href='?subcategory={{ subcategory.name }}'">
+                                       onclick="window.location.href='?subcategory={{ subcategory.id }}'">
                                 <label for="html{{ subcategory.name }}">{{ subcategory.name }}</label>
                             </form>
                         {% endfor %}</li>
@@ -61,7 +61,7 @@
 
         <div class="shop-grid">
             {% for product in products %}
-                <a href="{% url 'product_page' product_real_id=product.id%}">
+                <a href="{% url 'product_page' product_real_id=product.id %}">
                     <div class="product-wrapper">
 
                         <div class="product-photo">

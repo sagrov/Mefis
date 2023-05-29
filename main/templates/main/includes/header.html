@@ -11,7 +11,7 @@
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <ul class="menu">
                 {% for category in categories %}
-                    <li><a href="{% url 'category_details' category_id=category.id %}">{{ category.name }}</a></li>
+                    <li><a href="/catalog?category={{ category.id }}">{{ category.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
