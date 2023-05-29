@@ -11,47 +11,49 @@
 
             <div class="catalog-responsive-options">
                 <input type="checkbox" id="menu-catalog-toggle">
-                <label for="menu-catalog-toggle" class="menu-catalog-icon"><img class="filter-image" src="../../static/main/img/filter.png"></label>
+                <label for="menu-catalog-toggle" class="menu-catalog-icon"><img class="filter-image"
+                                                                                src="../../static/main/img/filter.png"></label>
 
                 <ul class="menu-catalog">
-
                     <li>
                         <h3 class="categories">Категорії</h3>
                         {% for category in categories %}
-                            <form href="{% url 'category_details' category_id=category.id %}">
-                                <input id="html{{ category.name }}" type="checkbox" class="category-operator"
-                                       value="{{ category.name }}" >
-                                <label for="html{{ category.name }}">{{ category.name }}</label>
+                            <form>
+                                <input id="html{{ category.id }}" type="checkbox"
+                                       onclick="window.location.href='?category={{ category.id }}'">
+                                <label for="html{{ category.id }}">{{ category.name }}</label>
                             </form>
                         {% endfor %}
                         <h3 class="sub-category">Підкатегорії</h3>
                         {% for subcategory in subcategories %}
                             <form>
-                                <input id="html{{ subcategory.name }}" type="checkbox"
-                                       onclick="window.location.href='?subcategory={{ subcategory.name }}'">
-                                <label for="html{{ subcategory.name }}">{{ subcategory.name }}</label>
+                                <input id="html{{ subcategory.id }}" type="checkbox"
+                                       onclick="window.location.href='?subcategory={{ subcategory.id }}'">
+                                <label for="html{{ subcategory.id }}">{{ subcategory.name }}</label>
                             </form>
                         {% endfor %}</li>
                 </ul>
-            <p class="filter-text">Фільтри</p>
+                <p class="filter-text">Фільтри</p>
             </div>
 
             <div class="sorting-menu">
                 <input type="checkbox" id="sorting-menu-toggle">
 
-                <label for="sorting-menu-toggle" class="sorting-menu-icon"><img class="sorting-image" src="../../static/main/img/up-down.png"></label>
+                <label for="sorting-menu-toggle" class="sorting-menu-icon">
+                    <img class="sorting-image" src="../../static/main/img/up-down.png">
+                </label>
                 <ul class="sorting-catalog">
                     <li>
                         <h3 class="categories">Сортування</h3>
-
-                        {% for category in categories %}
+                        {% for sorting_option in sorting_options %}
                             <form>
-                                <input id="html{{ category.name }}" type="checkbox" class="category-operator"
-                                       value="{{ category.name }}"
-                                       onclick="window.location.href='?category={{ category.name }}'">
-                                <label for="html{{ category.name }}">{{ category.name }}</label>
+                                <input id="html{{ sorting_option.field }}" type="checkbox" class="category-operator"
+                                       value="{{ sorting_option.field }}"
+                                       onclick="window.location.href='?sort={{ sorting_option.name }}'">
+                                <label for="html{{ sorting_option.field }}">{{ sorting_option.name }}</label>
                             </form>
-                        {% endfor %}</li>
+                        {% endfor %}
+                    </li>
                 </ul>
                 <p class="sorting-text">Сортування</p>
             </div>
@@ -61,7 +63,7 @@
 
         <div class="shop-grid">
             {% for product in products %}
-                <a href="{% url 'product_page' product_real_id=product.id%}">
+                <a href="{% url 'product_page' product_real_id=product.id %}">
                     <div class="product-wrapper">
 
                         <div class="product-photo">
@@ -83,57 +85,3 @@
 
     {% include "main/includes/footer.html" %}
 {% endblock %}
-
-{#{% extends 'main/layout.html' %}#}
-{##}
-{#{% block title %}#}
-{#    Mefis: Catalog#}
-{#{% endblock %}#}
-{##}
-{#{% block content %}#}
-{#    {% include "main/includes/header.html" %}#}
-{#    <div class="catalog">#}
-{#        <div class="categories">#}
-{#            <h3>Категорії</h3>#}
-{#            {% for category in categories %}#}
-{#                <form>#}
-{#                    <input id="html{{ category.name }}" type="checkbox"#}
-{#                           onclick="window.location.href='?category={{ category.name }}'">#}
-{#                    <label for="html{{ category.name }}">{{ category.name }}</label>#}
-{#                </form>#}
-{#            {% endfor %}#}
-{#            <h3 class="sub-category">Підкатегорії</h3>#}
-{#            {% for subcategory in subcategories %}#}
-{#                <form>#}
-{#                    <input id="html{{ subcategory.name }}" type="checkbox"#}
-{#                           onclick="window.location.href='?subcategory={{ subcategory.name }}'">#}
-{#                    <label for="html{{ subcategory.name }}">{{ subcategory.name }}</label>#}
-{#                </form>#}
-{#            {% endfor %}#}
-{##}
-{##}
-{#        </div>#}
-{##}
-{#        <div class="shop-grid">#}
-{#            {% for products in product %}#}
-{#                <a>#}
-{#                    <div class="product-wrapper">#}
-{#                        <div class="product-photo">#}
-{#                            <img src="{{ products.photo.url }}">#}
-{#                        </div>#}
-{#                        <div class="product-text">#}
-{#                            <div class="product-text-name">#}
-{#                                <h1>{{ products.name }}</h1>#}
-{#                            </div>#}
-{#                            <div class="product-text-price">#}
-{#                                <h1>{{ products.price }}</h1>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </a>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#    {% include "main/includes/footer.html" %}#}
-{#{% endblock %}#}
