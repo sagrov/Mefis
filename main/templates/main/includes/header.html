@@ -1,27 +1,32 @@
 <link rel="stylesheet" href="../../static/main/css/header.css">
 {#<link rel="stylesheet" href="../../../static/main/css/cart2.css">#}
 <div class="header-container">
-<header class="header">
-    <nav>
-        <div class="logo">
-            <a href="{% url 'home' %}">Mefis</a>
-        </div>
-        <div class="main-menu">
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-icon">&#9776;</label>
-            <ul class="menu">
-                {% for category in categories %}
-                    <li><a href="/catalog?category={{ category.id }}">{{ category.name }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
+    <header class="header">
+        <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}">Mefis</a>
+            </div>
+            <div class="main-menu">
+                <input type="checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <ul class="menu">
+                    {% for category in categories %}
+                        <li><a href="/catalog?category={{ category.id }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                    {% if user.is_authenticated %}
+                        <li><a href="/logout/">Logout</a></li>
+                    {% else %}
+                        <li><a href="/login/">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
 
-        <div class="options-container">
-            <img src="../../../static/main/img/icons8-shopping-bag-50%201.png">
-            <span class="quantity">0</span>
-        </div>
-    </nav>
-</header>
+            <div class="options-container">
+                <img src="../../../static/main/img/icons8-shopping-bag-50%201.png">
+                <span class="quantity"></span>
+            </div>
+        </nav>
+    </header>
 </div>
 
 

@@ -1,8 +1,12 @@
+import json
+
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.urls.base import reverse
 from django.shortcuts import render, get_object_or_404
 from .models import (Categories, Subcategories,
                      Product, ProductImage,
                      Size, Fabric,
-                     Cart, CartItem, ProductForMainPage)
+                     Cart, CartItem, ProductForMainPage, Colors)
 
 
 def index(request):
@@ -53,19 +57,58 @@ def category(request, category_id):
 
 
 def product(request, product_real_id):
+    colors = Colors.objects.all()
     categories = Categories.objects.all()
     main_product = Product.objects.get(id=product_real_id)
-    main_product_images = ProductImage.objects.filter(product__id=product_real_id)
-    print(main_product_images)
+    main_product_images = ProductImage.objects.filter(product=main_product)
+    print(main_product_images[0].images)
     products = Product.objects.all()
-    print(products)
-    return render(request, 'main/product.html', {'head_product': main_product, 'categories': categories, 'products': products, 'head_product_images': main_product_images})
+    return render(request, 'main/product.html', {'head_product': main_product, 'categories': categories, 'products': products, 'head_product_images': main_product_images, 'colors': colors})
 
 
 def cart(request):
-    products = Product.objects.all()
-    categories = Categories.objects.all()
-    return render(request, 'main/cart.html', {'categories': categories, 'products': products})
+    cart = None
+    cartitems = []
+
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
+        cartitems = cart.cartitems.all()
+
+    context = {"cart": cart, "items": cartitems}
+    return render(request, 'main/cart.html', context)
+
+def add_to_cart(request):
+    data = json.loads(request.body)
+    product_id = data["id"]
+    product = Product.objects.get(id=product_id)
+
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
+        cartitem, created = CartItem.objects.get_or_create(cart=cart, product=product)
+        cartitem.quantity += 1
+        cartitem.save()
+
+    return JsonResponse(product_id, safe=False)
+
+def remove_from_cart(request):
+    data = json.loads(request.body)
+    product_id = data["id"]
+    product = Product.objects.get(id=product_id)
+
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(user=request.user, completed=False)
+        cartitem, created = CartItem.objects.get_or_create(cart=cart, product=product)
+        if cartitem.quantity > 0:
+            cartitem.quantity -= 1
+        cartitem.save()
+
+    return JsonResponse(product_id, safe=False)
+
+def clear_cart(request):
+    user = request.user
+    CartItem.objects.filter(cart__user=user).delete()
+    Cart.objects.filter(user=user).delete()
+    return HttpResponseRedirect(reverse("cart"))
 
 def catalog(request):
     products = Product.objects.all()

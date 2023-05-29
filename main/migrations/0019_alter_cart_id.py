@@ -7,7 +7,7 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0018_alter_cart_id_alter_productformainpage_pic'),
+        ('main', '0001_initial'),
     ]
 
     operations = [

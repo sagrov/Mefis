@@ -7,7 +7,7 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0017_remove_categories_slug_remove_product_slug_and_more'),
+        ('main', '0001_initial'),
     ]
 
     operations = [

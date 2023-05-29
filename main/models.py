@@ -15,6 +15,9 @@ class Categories(models.Model):
         return f'{self.name}'
 
 
+
+
+
 class Subcategories(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
@@ -46,9 +49,6 @@ class Product(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-
-    # slug = models.SlugField(max_length=100, db_index=True, unique=True, default=uuid.uuid4())
-
     fabrics = models.ForeignKey(Fabric, on_delete=models.DO_NOTHING, null=True)
 
     photo = models.ImageField(upload_to='main/static/main/img')
@@ -109,3 +109,11 @@ class ProductForMainPage(models.Model):
 
     def __str__(self):
         return f'{self.name} --> {self.pic}'
+
+
+class Colors(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.name}'
