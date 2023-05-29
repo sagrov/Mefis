@@ -55,7 +55,7 @@ def category(request, category_id):
 def product(request, product_real_id):
     categories = Categories.objects.all()
     main_product = Product.objects.get(id=product_real_id)
-    main_product_images = ProductImage.objects.filter()
+    main_product_images = ProductImage.objects.filter(main_product=main_product)
     products = Product.objects.all()
     return render(request, 'main/product.html', {'head_product': main_product, 'categories': categories, 'products': products, 'head_product_images': main_product_images})
 

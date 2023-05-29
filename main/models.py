@@ -105,7 +105,7 @@ class CartItem(models.Model):
 
 class ProductForMainPage(models.Model):
     name = models.CharField(max_length=50)
-    pic = models.FileField("img", upload_to=f"img")
+    pic = models.FileField("img", upload_to='main/static/main/img')
 
     def __str__(self):
         return f'{self.name} --> {self.pic}'

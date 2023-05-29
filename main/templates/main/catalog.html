@@ -18,9 +18,9 @@
                     <li>
                         <h3 class="categories">Категорії</h3>
                         {% for category in categories %}
-                            <form>
+                            <form href="{% url 'category_details' category_id=category.id %}">
                                 <input id="html{{ category.name }}" type="checkbox" class="category-operator"
-                                       value="{{ category.name }}" href="{% url 'category_details' category_id=category.id %}">
+                                       value="{{ category.name }}" >
                                 <label for="html{{ category.name }}">{{ category.name }}</label>
                             </form>
                         {% endfor %}
