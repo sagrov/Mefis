@@ -9,7 +9,7 @@
 /********* MAIN BANNER ***********************************************************/
 
 .main-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/main-page-background.jpg') no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/oversized_furniture_jean_philippe_delberghe_auf_unsplash_m24_full_m36_1025 1.png') no-repeat center center;
     background-size: cover;
     padding: 170px 0px 270px 0px;
     text-align: center;
@@ -306,6 +306,11 @@
 .six-categories .category:hover {
     transition: 0.5s;
     transform: translate(0, -20px);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.six-categories .category:hover .product-pic {
+    -webkit-filter: brightness(60%);
 }
 
 .six-categories .category:hover .white-button-category {
@@ -431,6 +436,11 @@
     .six-categories .category .category-name {
         opacity: 1;
     }
+
+    .six-categories .category .product-pic {
+    -webkit-filter: brightness(60%);
+}
+
 
     .six-categories .category .white-button-category {
         top: -45%;

@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../static/main/css/header.css">
-
+{#<link rel="stylesheet" href="../../../static/main/css/cart2.css">#}
+<div class="header-container">
 <header class="header">
     <nav>
         <div class="logo">
@@ -9,16 +10,19 @@
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <ul class="menu">
-                <li><a href="catalog?category=Стільці">Стільці</a></li>
-                <li><a href="catalog?category=Столи">Столи</a></li>
-                <li><a href="catalog?category=Лампи">Лампи</a></li>
-                <li><a href="catalog?category=Ліжка">Ліжко</a></li>
-                <li><a href="catalog?category=Дивани">Диван</a></li>
+                {% for category in categories %}
+                    <li><a href="{% url 'category_details' category_id=category.id %}">{{ category.name }}</a></li>
+                {% endfor %}
             </ul>
         </div>
 
-            <img class="shopping-bag-icon" src="../../../static/main/img/icons8-shopping-bag-50%201.png">
-        <img class="profile-bag-icon" src="../../../static/main/img/icons8-shopping-bag-50%201.png">
-
+        <div class="options-container">
+            <img src="../../../static/main/img/icons8-shopping-bag-50%201.png">
+            <span class="quantity">0</span>
+        </div>
     </nav>
 </header>
+</div>
+
+
+

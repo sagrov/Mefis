@@ -9,6 +9,7 @@ from django.db import models
 class Categories(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
+    # slug = models.SlugField(max_length=100, unique=True, default=uuid.uuid4())
 
     def __str__(self):
         return f'{self.name}'
@@ -17,6 +18,7 @@ class Categories(models.Model):
 class Subcategories(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
+    # slug = models.SlugField(max_length=100, db_index=True, unique=True, default=uuid.uuid4())
 
     def __str__(self):
         return f'{self.name}'
@@ -45,6 +47,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
 
+    # slug = models.SlugField(max_length=100, db_index=True, unique=True, default=uuid.uuid4())
 
     fabrics = models.ForeignKey(Fabric, on_delete=models.DO_NOTHING, null=True)
 
@@ -60,7 +63,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
-    images = models.FileField("img", upload_to=f"img")
+    images = models.ImageField("img", upload_to='main/static/main/img')
 
     def __str__(self):
         return self.product.name
@@ -102,7 +105,7 @@ class CartItem(models.Model):
 
 class ProductForMainPage(models.Model):
     name = models.CharField(max_length=50)
-    pic = models.FileField("img", upload_to=f"img")
+    pic = models.FileField("img", upload_to='main/static/main/img')
 
     def __str__(self):
         return f'{self.name} --> {self.pic}'

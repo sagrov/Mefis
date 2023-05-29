@@ -24,29 +24,29 @@
                 </div>
             </div>
                 <div class="small-image-1">
-                    <img src="{{ product_images.images.url }}">
+                    <img src="{{ head_product_images.photo.url }}">
                 </div>
                 <div class="small-image-2">
-                    <img src="{{ product_images.images.url }}">
+                    <img src="{{ head_product_images.photo.url }}">
                 </div>
                 <div class="big-image">
-                    <img src="{{ product_main.photo }}" alt="gg">
+                    <img src="{{ head_product_images.photo.url }}" alt="gg">
                 </div>
         </div>
         <div class="product-name">
 
             <div class="name-and-category">
 
-                <h5>{{ product_main.name }}</h5>
-                <p>{{ product_main.category }}</p>
+                <h5>{{ head_product.name }}</h5>
+                <p>{{ head_product.category }}</p>
 
             </div>
             <div class="price">
-                <p>{{ product_main.price }} грн</p>
+                <p>{{ head_product.price }} грн</p>
             </div>
         </div>
         <div class="product-description">
-            <p>{{ product_main.description }}</p>
+            <p>{{ head_product.description }}</p>
         </div>
         {#            {% endfor %}#}
         <div class="product-options">
