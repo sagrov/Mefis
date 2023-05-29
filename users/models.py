@@ -32,24 +32,3 @@ class CustomAccountManager(BaseUserManager):
         user.set_password(password)
         user.save()
         return user
-
-
-class NewUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_("email address"), unique=True)
-    username = models.CharField(max_length=150, unique=True, null=True)
-    first_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150, blank=True)
-    phone = models.CharField(max_length=150, blank=True)
-
-    start_date = models.DateTimeField(default=timezone.now)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-
-    objects = CustomAccountManager()
-
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["user_name"]
-
-    class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"

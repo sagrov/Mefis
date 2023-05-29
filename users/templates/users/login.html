@@ -1,0 +1,39 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block link %}
+    <title>Login</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="wrap_form">
+    <div class="form_body">
+        <h2 class="form__header">Login</h2>
+        <form action="{% url 'login' %}" method="post" class="form_registr">
+            {% csrf_token %}
+            <div class="form-group-usual">
+                <label for="{{form.username.id_for_label}}">Email</label>
+                {{form.username}}
+                <div class="form-error">
+                    {{form.username.errors}}
+                </div>
+            </div>
+            <div class="form-group-usual">
+                <label for="{{form.password.id_for_label}}">Password</label>
+                {{form.password}}
+                <div class="form-error">
+                    {{form.password.errors}}
+                </div>
+            </div>
+            <div class="button__body">
+                <a href="{% url 'register' %}" class="btn   first_butt">Create account</a>
+
+                <button type="submit" name="submit_button" class="btn btn-success btn-block mb-3">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

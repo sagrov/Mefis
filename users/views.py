@@ -27,7 +27,7 @@ class LoginUser(DataMixin, SuccessMessageMixin, LoginView):
     error_message = "Something went wrong"
     success_url = reverse_lazy("home")
     user = ""
-    # next_page = '/'
+    next_page = '/'
     # next = 'home'
     success_message = f"Successfully login"
 
