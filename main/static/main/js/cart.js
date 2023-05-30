@@ -1,7 +1,7 @@
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split('/');
+        const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             // Does this cookie string begin with the name we want?
@@ -17,15 +17,16 @@ function getCookie(name) {
 
 const csrftoken = getCookie('csrftoken');
 
-let btns = document.querySelectorAll(".add-to-cart-button button")
+let buttons = document.querySelectorAll(".delete-button")
 
-btns.forEach(btn => {
-    btn.addEventListener("click", addToCart)
+buttons.forEach(button => {
+    button.addEventListener("click", removeFromCart)
 })
 
-function addToCart(e) {
-    let product_id = e.target.value
-    let url = "/add_to_cart"
+function removeFromCart(e) {
+    let product_id = buttons.value
+    console.log(product_id)
+    let url = "/remove_from_cart"
     let data = {id: product_id}
 
     fetch(url, {

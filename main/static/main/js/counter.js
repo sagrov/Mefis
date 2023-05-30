@@ -12,8 +12,7 @@ incrementBtn.addEventListener('click', () => {
 decrementBtn.addEventListener('click', () => {
     if (counter == 1) {
         return counter = 1;
-    }
-    else {
+    } else {
         counter--;
     }
     counterValue.innerHTML = counter;
@@ -33,22 +32,26 @@ function getCookie(name) {
             }
         }
     }
+    console.log(cookieValue)
     return cookieValue;
 }
 
 const csrftoken = getCookie('csrftoken');
 
 // let btns = document.querySelectorAll(".btn-primary")
-let btns = document.querySelectorAll(".add")
+let btns = document.querySelectorAll(".add-to-cart-button")
 
 btns.forEach(btn => {
     btn.addEventListener("click", addToCart)
 })
 
 function addToCart(e) {
-    let product_id = e.target.value
+    // let product_id = e.target.value;
+    let url_start = window.location.href;
+    let product_id = url_start.substring(url_start.lastIndexOf('/')+1);
     let url = "/add_to_cart"
-    let data = {id: product_id}
+    let data = {id: product_id, quantity: counter}
+    console.log(data)
 
     fetch(url, {
         method: "POST",
@@ -64,7 +67,7 @@ function addToCart(e) {
         })
 }
 
-let buttons = document.querySelectorAll(".remove")
+let buttons = document.querySelectorAll(".delete-button")
 
 buttons.forEach(button => {
     button.addEventListener("click", removeFromCart)
