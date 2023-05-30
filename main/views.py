@@ -26,7 +26,6 @@ def category(request, category_id):
 
 
 def product(request, product_real_id):
-
     colors = Colors.objects.all()
     categories = Categories.objects.all()
     main_product = Product.objects.get(id=product_real_id)

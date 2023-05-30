@@ -15,9 +15,6 @@ class Categories(models.Model):
         return f'{self.name}'
 
 
-
-
-
 class Subcategories(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
