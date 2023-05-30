@@ -13,16 +13,32 @@ def index(request):
     categories = Categories.objects.all()
     products = Product.objects.all()
     products_six = ProductForMainPage.objects.all()
-    return render(request, 'main/index.html', {'products': products, 'products_six': products_six, 'categories': categories })
+    return render(request, 'main/index.html',
+                  {'products': products, 'products_six': products_six, 'categories': categories})
 
-
+def catalog(request):
+    products = Product.objects.all()
+    if request.method == "GET":
+        request_subcategory = request.GET.get("subcategory")
+        request_category = request.GET.get("category")
+        if request_category != '1':
+            if request.GET.get("category"):
+                products = Product.objects.filter(category=request_category)
+        if request.GET.get("subcategory"):
+            products = Product.objects.filter(subcategory=request_subcategory)
+    categories = Categories.objects.all()
+    subcategories = Subcategories.objects.all()
+    print(request.GET)
+    return render(request, 'main/catalog.html',
+                  {'products': products, 'categories': categories, 'subcategories': subcategories,
+                   'sorting_options': sorting_options})
 
 def category(request, category_id):
     categories = Categories.objects.all()
     products = Product.objects.filter(category__product__id=category_id)
-    print(request.GET.get("category"))
     subcategories = Subcategories.objects.all()
-    return render(request, 'main/catalog.html', {'products': products, 'categories': categories, 'subcategories': subcategories})
+    return render(request, 'main/catalog.html',
+                  {'products': products, 'categories': categories, 'subcategories': subcategories})
 
 
 def product(request, product_real_id):
@@ -99,32 +115,7 @@ def catalog(request):
             if request.GET.get("subcategory"):
                 products = Product.objects.filter(subcategory=request_subcategory)
     categories = Categories.objects.all()
+
     subcategories = Subcategories.objects.all()
     return render(request, 'main/catalog.html',
                   {'products': products, 'categories': categories, 'subcategories': subcategories})
-
-    #
-    # if request.method == "GET":
-    #     request_category = request.GET.get("category")
-    #     request_subcategory = request.GET.get("subcategory")
-    #     if request.GET.get("category"):
-    #         if request_category == "2":
-    #             products = Product.objects.filter(category=2)
-    #         elif request_category == "3":
-    #             products = Product.objects.filter(category=3)
-    #         elif request_category == "4":
-    #             products = Product.objects.filter(category=4)
-    #         elif request_category == "5":
-    #             products = Product.objects.filter(category=5)
-    #         elif request_category == "6":
-    #             products = Product.objects.filter(category=6)
-    #         else:
-    #             products = Product.objects.all()
-    #
-    #     if request.GET.get("subcategory"):
-    #         if request_subcategory == "2":
-    #             products = Product.objects.filter(subcategory=2)
-    #         if request_subcategory == "3":
-    #             products = Product.objects.filter(subcategory=3)
-    #         if request_subcategory == "1":
-    #             products = Product.objects.all()
