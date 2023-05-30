@@ -1,7 +1,7 @@
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
+        const cookies = document.cookie.split('/');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             // Does this cookie string begin with the name we want?
@@ -11,6 +11,7 @@ function getCookie(name) {
             }
         }
     }
+    console.log(cookieValue)
     return cookieValue;
 }
 

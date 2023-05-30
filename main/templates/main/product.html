@@ -7,17 +7,7 @@
 
 {% block content %}
     <script src="../../static/main/js/carousel-product.js"></script>
-
-    <script>
-        const name = document.getElementById('option-color-name');
-        const btn = document.getElementById('{{ color.name }}')
-
-        function changeText() {
-            name.innerText = btn.value;
-        }
-
-        btn.addEventListener('click', changeText);
-    </script>
+        <script src="../../static/main/js/cart.js"></script>
     {% include "main/includes/header.html" %}
     <div class="product-page">
         <div class="product-images">

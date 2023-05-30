@@ -29,7 +29,7 @@
                     {% if item.quantity != 0 %}
                 <div class="cart-item-wrapper">
                     <div class="item-image">
-                        <img src="{{ item.photo.url }}" alt="img">
+                        <img src="{{ item.images.url }}" alt="img">
                     </div>
                     <div class="item-name-quantity">
                         <h3 class="cart-name ">{{ item.name }}</h3>
@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="total-cost">
-            <h3>Загальна вартість: {{ cart.total }}</h3>
+            <h3>Загальна вартість: </h3>
             <div class="cost">
-                <h3>грн</h3>
+                <h3>{{ cart.total }} грн</h3>
             </div>
         </div>
         <div class="purchase-button">
