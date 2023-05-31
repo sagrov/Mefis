@@ -7,7 +7,7 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0007_alter_cart_id_alter_fabric_id_alter_size_id_and_more'),
+        ('main', '0001_initial'),
     ]
 
     operations = [

@@ -42,14 +42,12 @@
 }
 
 .small-image-1 {
-    background-color: #334f6c;
     grid-area: 1/1/2/2;
     height: 100%;
     width: 200px;
 }
 
 .small-image-2 {
-    background-color: bisque;
     grid-area: 2/1/3/2;
     height: 100%;
     width: 200px;
@@ -261,6 +259,21 @@
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 0.3s ease-in-out;
+    list-style-type: none;
+}
+
+.fabric-option .options-menu {
+    flex-direction: column;
+    background-color: black;
+    align-items: start;
+    position: relative;
+    top: 66px;
+    right: 414px;
+    z-index: 1;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+    list-style-type: none;
 }
 
 .options-menu-icon {
@@ -289,8 +302,12 @@
     border: none;
 }
 
+.add-button .add-to-cart-button:hover {
+    cursor: pointer;
+}
+
 .add-button .add-to-cart-button p {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .size-option .options-menu {
@@ -299,6 +316,12 @@
     }
 
 @media (max-width: 1450px) {
+
+    .fabric-option .options-menu {
+        top: 91%;
+        right: 177%;
+        list-style-type: none;
+    }
 
     .product-page {
         grid-template-columns: 600px auto;
@@ -358,7 +381,7 @@
     }
 
     .big-image {
-        padding-right: 10%;
+        margin-right: 10%;
     }
 
     .size-option .options-menu {
@@ -375,6 +398,17 @@
     }
 }
 
+.main-product-image {
+    width: 100%;
+}
+
+.small-image-product {
+    width: 100%;
+}
+
+.big-image {
+    object-fit: contain;
+}
 
 @media (max-width: 1150px) {
     .product-page {
@@ -413,7 +447,6 @@
 
     .product-demo {
         display: flex;
-        background-color: red;
         width: 100%;
     }
 
@@ -459,8 +492,12 @@
     }
 
     .product-name {
-        margin-top: 40px;
+        padding-top: 40px;
     }
+}
+
+.main-product-image {
+    height: 100%;
 }
 
 @media (max-width: 900px) {
@@ -488,7 +525,6 @@
 
     .product-demo {
         display: flex;
-        background-color: red;
         width: 100%;
         height: 100%;
     }
@@ -595,7 +631,6 @@
 
     .product-demo {
         display: flex;
-        background-color: red;
         width: 100%;
         height: 100%;
     }
@@ -740,7 +775,7 @@
 
 .product-demo-others .item img {
     width: 100%;
-    height: 400px;
+    height: 500px;
     object-fit: cover;
 }
 

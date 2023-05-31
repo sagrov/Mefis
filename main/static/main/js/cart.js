@@ -1,38 +1,44 @@
-// let openShopping = document.querySelector('.shopping');
-// let closeShopping = document.querySelector('.closeShopping');
-// let list = document.querySelector('.list');
-// let listCard = document.querySelector('.listCard');
-// let body = document.querySelector('body');
-// let total = document.querySelector('.total');
-// let quantity = document.querySelector('.quantity');
-//
-// openShopping.addEventListener('click', ()=> {
-//     body.classList.add('focus');
-// })
-//
-// closeShopping.addEventListener('click', ()=> {
-//     body.classList.remove('active');
-// })
-//
-// let listCards = []
-// function addToCard(key) {
-//     if(listCards[key] == null) {
-//         listCards[key] = products[key];
-//         listCards[key].quantity = 1
-//     }
-//     reloadCard();
-// }
-
-function ready() {
-    var removeCartButtons = document.getElementsByClassName('delete-button')
-    console.log(removeCartButtons)
-    for (var i = 0; i < removeCartButtons.length; i++) {
-        var button = removeCartButtons[i]
-        button.addEventListener('click', removeCartItem);
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
+    console.log(cookieValue)
+    return cookieValue;
 }
 
-function removeCartItem(event) {
-    var buttonCicked = event.target
-    buttonCicked.parentElement.remove()
+const csrftoken = getCookie('csrftoken');
+
+let buttons = document.querySelectorAll(".delete-button")
+
+buttons.forEach(button => {
+    button.addEventListener("click", removeFromCart)
+})
+
+function removeFromCart(e) {
+    let product_id = buttons.value
+    console.log(product_id)
+    let url = "/remove_from_cart"
+    let data = {id: product_id}
+
+    fetch(url, {
+        method: "POST",
+        headers: {"Content-Type": "application/json", 'X-CSRFToken': csrftoken},
+        body: JSON.stringify(data)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
 }

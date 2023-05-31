@@ -25,28 +25,33 @@
             {#                {% for items in cart_items %}#}
             {#                {% endfor %}#}
             <div class="cart-item">
-                {% for items in products %}
+                {% for item in items %}
+                    {% if item.quantity != 0 %}
                 <div class="cart-item-wrapper">
                     <div class="item-image">
-                        <img src="{{ items.photo.url }}" alt="img">
+                        <img src="{{ item.product.photo.url }}" alt="img">
                     </div>
                     <div class="item-name-quantity">
-                        <h3 class="cart-name ">{{ items.name }}</h3>
-                        <h3 class="cart-quantity">Кількість: </h3>
+                        <h3 class="cart-name ">{{ item.product.name }}</h3>
+                        <h3 class="cart-quantity">Кількість: {{ item.quantity }}</h3>
                     </div>
                     <div class="item-price">
-                        <h3>{{ items.price }} грн</h3>
-                        <button class="delete-button">Видалити</button>
+                        <h3>{{ item.price }} грн</h3>
+                        <button class="delete-button" id="{{ item.product.id }}"  value="{{ item.product.id }}">Видалити</button>
                     </div>
                 </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
         <div class="total-cost">
             <h3>Загальна вартість: </h3>
             <div class="cost">
-                <h3>грн</h3>
+                <h3>{{ cart.total }} грн</h3>
             </div>
+        </div>
+        <div class="purchase-button">
+            <button class="button-purchase">Оплатити</button>
         </div>
     </div>
     {% include "main/includes/footer.html" %}

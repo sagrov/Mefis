@@ -65,7 +65,7 @@ nav {
   transform: scale(1, 1);
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 880px) {
   .header {
     position: sticky;
   }
@@ -149,9 +149,9 @@ header .options-container span {
   align-items: center;
   color: white;
   position: absolute;
-  top: -7px;
-  left: 80%;
-  padding: 3px 6px;
+  top: 0px;
+  left: 70%;
+  padding: 6px 6px;
 }
 
 

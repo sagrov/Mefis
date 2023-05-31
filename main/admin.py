@@ -10,4 +10,4 @@ admin.site.register(Fabric)
 admin.site.register(Cart)
 admin.site.register(CartItem)
 admin.site.register(ProductForMainPage)
-
+admin.site.register(Colors)
